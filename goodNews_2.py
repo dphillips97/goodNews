@@ -10,9 +10,11 @@ import random
 # extract text from each item 1-99
 # prettify text: remove initial and final quote marks
 # choose random news_block
+# Something weird is going on with the regex grouping for the body of the text 
 
 #TODO
-# Something weird is going on with the regex grouping for the body of the text 
+# is there a way to pull a random item from the website 
+# 	instead of the whoe html object?
 # return link for each item
 # return error message for specific text item
 
@@ -57,15 +59,20 @@ def cleanup():
 			# match main message
 			item_message = match_obj.group(2)
 				
-			# match 
-			
-			
+			# add message to list
 			item_list.append(item_message)
 		
 		except:
+			# ideally this would show which item failed
 			pass
-	#move to newfunction
-	rand = random.randint(1,99)
-	print(item_list[rand])
 	
-cleanup()
+	return item_list
+	
+def rand_choice(list_out):
+	
+	# print a random list item
+	print(list_out[random.randint(1,99)])
+
+	
+list_entries = cleanup()
+rand_choice(list_entries) 
