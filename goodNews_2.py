@@ -3,20 +3,8 @@
 
 from bs4 import BeautifulSoup 
 import requests
-import re
 import random
 
-# DONE
-# extract text from each item 1-99
-# prettify text: remove initial and final quote marks
-# choose random news_block
-# Something weird is going on with the regex grouping for the body of the text 
-
-#TODO
-# is there a way to pull a random item from the website 
-# 	instead of the whoe html object?
-# return link for each item
-# return error message for specific text item
 
 def soupify():
 	url = r'https://qz.com/1169003/the-99-best-things-that-happened-in-2017/'
@@ -35,37 +23,21 @@ def soupify():
 
 def cleanup():
 	
+	# Empty list to store p elements
 	item_list = []
 	
 	# Call function on page
 	news_block = soupify()
 	
-	# For loop goes thru each 'p' on page (in HTML)
+	# For loop goes thru each 'p' in page object
 	for item in news_block:
 		
 		# Create text object from soup object
 		item_doc = item.text
 		
-		# Create regex to extract groups from text
-		# Add each item to a list and extract random list element
-		match_obj = re.match(r'(\d{1,2}\.\s)(.+\.)', item_doc)
-		
-		#match_obj = re.match(r'^(\d{1,2}\.\s)(.+\.?+)', item_doc)
-		
-		try:
-			# match number, return str
-			item_number = match_obj.group(1)
-						
-			# match main message
-			item_message = match_obj.group(2)
-				
-			# add message to list
-			item_list.append(item_message)
-		
-		except:
-			# ideally this would show which item failed
-			pass
-	
+		# add message to list
+		item_list.append(item_doc)
+
 	return item_list
 	
 def rand_choice(list_out):
