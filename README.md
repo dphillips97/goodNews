@@ -1,5 +1,6 @@
 # goodNews
-This is a practice file to scrape this site: https://qz.com/1169003/the-99-best-things-that-happened-in-2017/
-and print a random item. Uses regex, requests, BeautifulSoup.
+This is a practice script to scrape this site: https://qz.com/1169003/the-99-best-things-that-happened-in-2017/
+and print a random item. Uses requests & BeautifulSoup. Regex is not required.
 
-Goal: also get source (name AND link) and item number. This will require cleaning up the regex AGAIN
+Goal: create Django app that displays random news element upon load.
+
